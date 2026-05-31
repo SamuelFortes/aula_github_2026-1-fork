@@ -21,4 +21,13 @@ class Conta {
                     return 0;
 		        }
 		    }
+
+		    public boolean transferirPara(Conta destino, double valor){
+		        if(destino == null || valor <= 0 || this.saldo < valor){
+		            return false;
+		        }
+		        this.saldo -= valor;
+		        destino.saldo += valor;
+		        return true;
+		    }
 		}
