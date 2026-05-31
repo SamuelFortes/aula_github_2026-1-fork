@@ -5,6 +5,10 @@ class Cliente {
 		    public String nome;
 		    private int cpf;
 		    List<Conta> contas = new ArrayList<>();
+
+		    public int getCpf(){
+		        return cpf;
+		    }
 		    
 		    public void adicionarConta(int numeroConta, double saldo, String tipoConta){
 		        Conta novaConta = new Conta();
