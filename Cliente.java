@@ -3,7 +3,7 @@ import java.util.List;
 
 class Cliente {
 		    public String nome;
-		    private int cpf;
+		    public int cpf;
 		    List<Conta> contas = new ArrayList<>();
 
 		    public int getCpf(){
