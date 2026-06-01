@@ -7,38 +7,51 @@ public class Menu {
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public Menu(List<String> options) {
-		this.title = "Menu";
-		this.options = options;
+		this("Menu", options);
 	}
 
 	public Menu(String title, List<String> options) {
-		this.title = title;
+		if (options == null || options.isEmpty()) {
+			throw new IllegalArgumentException("O menu precisa ter pelo menos uma opção.");
+		}
+
+		if (title == null || title.trim().isEmpty()) {
+			this.title = "Menu";
+		} else {
+			this.title = title;
+		}
+
 		this.options = options;
 	}
 
 	public int getSelection() {
 		int op = 0;
-		while (op==0){
-			System.out.println(title+"\n");
-			int i=1;
+
+		while (op == 0) {
+			System.out.println(title + "\n");
+
+			int i = 1;
 			for (String option : options) {
 				System.out.println(i++ + " - " + option);
 			}
 
-			System.out.println("Informe a opcao desejada. ");
+			System.out.println("Informe a opcao desejada: ");
 			String str = scanner.nextLine();
+
 			try {
-				op = Integer.parseInt(str);
-			}
-			catch (NumberFormatException e) {
-				op =0;
-			}
-			if (op>=i){
-				System.out.println("Opcao errada!");
-				op=0;
+				op = Integer.parseInt(str.trim());
+			} catch (NumberFormatException e) {
+				System.out.println("Entrada invalida! Digite apenas numeros.");
+				op = 0;
+				continue;
 			}
 
+			if (op < 1 || op >= i) {
+				System.out.println("Opcao errada!");
+				op = 0;
+			}
 		}
+
 		return op;
 	}
 
