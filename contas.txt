@@ -1,0 +1,4 @@
+NUMERO_CONTA;SALDO;TIPO_CONTA
+122;21.0;Corrente
+123;-18.0;Corrente
+333;0.0;Corrente
